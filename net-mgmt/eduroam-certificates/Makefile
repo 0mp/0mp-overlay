@@ -15,13 +15,15 @@ NO_ARCH=	yes
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 
-PLIST_FILES=	${ETCDIR}/ssl/certs/eduroam.pem
+ETCDIR=		${PREFIX}/etc/ssl/certs
+
+PLIST_FILES=	${ETCDIR}/eduroam.pem
 
 post-extract:
 	${CP} ${DISTDIR}/${DISTFILES} ${WRKSRC}
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${ETCDIR}/ssl/certs
-	${INSTALL_DATA} ${WRKSRC}/chain.txt ${STAGEDIR}${ETCDIR}/ssl/certs/eduroam.pem
+	@${MKDIR} ${STAGEDIR}${ETCDIR}
+	${INSTALL_DATA} ${WRKSRC}/chain.txt ${STAGEDIR}${ETCDIR}/eduroam.pem
 
 .include <bsd.port.mk>
