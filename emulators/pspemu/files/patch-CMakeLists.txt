@@ -1,24 +1,19 @@
---- CMakeLists.txt.orig	2020-01-23 19:28:11 UTC
+--- CMakeLists.txt.orig	2020-01-31 15:29:33 UTC
 +++ CMakeLists.txt
-@@ -8,8 +8,6 @@ find_package (Threads)
- find_package(PkgConfig)
- find_library(m REQUIRED)
- 
--pkg_check_modules(PC_LIBPSPPROXY REQUIRED IMPORTED_TARGET libpspproxy)
--
- add_executable(PSPEmu
-                       psp-emu.c
-                       psp-core.c
-@@ -31,11 +29,9 @@ target_include_directories(PSPEmu PUBLIC
-                            "${PROJECT_SOURCE_DIR}/unicorn/include"
-                            "${PROJECT_SOURCE_DIR}/capstone/include"
-                            "${PROJECT_SOURCE_DIR}/libgdbstub"
--                           "${LIBPSPPROXY_INCLUDE_DIRS}"
+@@ -28,13 +28,12 @@ add_executable(PSPEmu
+ target_include_directories(PSPEmu PUBLIC
+                            "${PROJECT_SOURCE_DIR}/include"
+                            "${PROJECT_SOURCE_DIR}/psp-includes"
+-                           "${PROJECT_SOURCE_DIR}/libgdbstub"
+                            "${LIBPSPPROXY_INCLUDE_DIRS}"
                             )
  
--target_link_libraries(PSPEmu PkgConfig::PC_LIBPSPPROXY)
+ target_link_libraries(PSPEmu PkgConfig::PC_LIBPSPPROXY)
 -target_link_libraries(PSPEmu ${CMAKE_SOURCE_DIR}/unicorn/libunicorn.a)
+-target_link_libraries(PSPEmu ${CMAKE_SOURCE_DIR}/capstone/libcapstone.a)
+-target_link_libraries(PSPEmu ${CMAKE_SOURCE_DIR}/libgdbstub/libgdbstub.a)
 +target_link_libraries(PSPEmu ${UNICORN_LIBRARIES})
- target_link_libraries(PSPEmu ${CMAKE_SOURCE_DIR}/capstone/libcapstone.a)
- target_link_libraries(PSPEmu ${CMAKE_SOURCE_DIR}/libgdbstub/libgdbstub.a)
++target_link_libraries(PSPEmu ${CAPSTONE_LIBRARIES})
++target_link_libraries(PSPEmu ${GDBSTUB_LIBRARIES})
  target_link_libraries(PSPEmu m)
+ target_link_libraries(PSPEmu ${CMAKE_THREAD_LIBS_INIT})
