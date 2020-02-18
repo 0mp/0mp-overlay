@@ -1,5 +1,5 @@
 PORTNAME=	libgdbstub
-DISTVERSION=	g20200129
+DISTVERSION=	g20200213
 CATEGORIES=	emulators devel
 
 MAINTAINER=	0mp@FreeBSD.org
@@ -11,6 +11,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		cmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	AlexanderEichner
-GH_TAGNAME=	ae647b4
+GH_TAGNAME=	cef4b4fd4b2ab2e25bf336530a6093388b215471
 
 .include <bsd.port.mk>

@@ -1,5 +1,5 @@
 PORTNAME=	pspemu
-DISTVERSION=	g20200123
+DISTVERSION=	g20200218
 CATEGORIES=	emulators
 
 MAINTAINER=	0mp@FreeBSD.org
@@ -15,12 +15,12 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libcapstone.a:devel/capstone4 \
 		${LOCALBASE}/lib/libpspproxy.a:emulators/pspemu-libpspproxy \
 		${LOCALBASE}/lib/libunicorn.a:emulators/pspemu-unicorn
 
-USES=		cmake localbase pkgconfig
+USES=		cmake localbase pkgconfig ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	PSPReverse
 GH_PROJECT=	PSPEmu
-GH_TAGNAME=	eebe32cd
-GH_TUPLE=	PSPReverse:psp-includes:2bea39c892ee1:pspincludes/psp-includes
+GH_TAGNAME=	3fc9ed8
+GH_TUPLE=	PSPReverse:psp-includes:c04636064869a7e51d060ae4a1a45ed3261df839:pspincludes/psp-includes
 
 CMAKE_ARGS=	-DCAPSTONE_LIBRARIES:STRING=${LOCALBASE}/lib/libcapstone.a \
 		-DGDBSTUB_LIBRARIES:STRING=${LOCALBASE}/lib/libgdbstub.a \
